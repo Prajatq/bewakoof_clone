@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto-Scrolling Slider</title>
+  <style>
+    .slider-container {
+      width: 80%;
+      margin: 50px auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slider {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s linear; /* Linear transition */
+    }
+
+    .slide {
+      flex: 0 0 33.333%;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+<div class="slider-container">
+  <div class="slider">
+    <div class="slides">
+      <div class="slide">
+        <img src="https://images.bewakoof.com/uploads/grid/app/Double-delight-MAD-SALE-Common-1x1-banner-1705500550.jpg" alt="Slide 1">
+      </div>
+      <div class="slide">
+        <img src="https://images.bewakoof.com/uploads/grid/app/Double-delight-MAD-SALE-Common-1x1-banner-1705500550.jpg" alt="Slide 2">
+      </div>
+      <div class="slide">
+        <img src="https://images.bewakoof.com/uploads/grid/app/Double-delight-MAD-SALE-Common-1x1-banner-1705500550.jpg" alt="Slide 3">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const slider = document.querySelector('.slider');
+  const slides = document.querySelectorAll('.slide');
+  const slideWidth = slides[0].clientWidth;
+
+  let slideIndex = 0;
+
+  function autoSlide() {
+    slideIndex++;
+    slider.style.transition = 'transform 0.5s linear';
+    slider.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+  }
+
+  setInterval(autoSlide, 3000); // Change slide every 3 seconds
+</script>
+
+</body>
+</html>
